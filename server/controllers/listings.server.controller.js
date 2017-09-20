@@ -99,6 +99,7 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
 	Listing.find().sort('code').exec(function(err,listings) {
 		if(err) {
+      console.log(err);
 			res.status(400).send(err);
 		}
 		else {

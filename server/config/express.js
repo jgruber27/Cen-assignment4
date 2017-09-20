@@ -26,7 +26,10 @@ module.exports.init = function() {
   });
 
   /* serve static files */
+  //if url is '/'
   app.use('/', express.static(__dirname + '/../../client'));
+
+  //or if url is /public
   app.use('/public', express.static(__dirname + '/../../public'));
   
 
@@ -35,7 +38,8 @@ module.exports.init = function() {
 
   /* go to homepage for all routes not specified */ 
   app.all('/*', function(req,res) {
-  	res.sendfile(path.resolve('client/index.html'));
+    var file = 'client/index.html';
+  	res.sendfile(path.resolve(file));
   });
 
   return app;
